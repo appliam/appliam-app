@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <!-- STYLESHEETS -->
+        
+        <link rel="stylesheet" href="vendors/jquery.mobile.structure-1.4.2.min.css" />
+        <link rel="stylesheet" href="vendors/jquery.mobile.flatui.css" />
+        <link rel="stylesheet" href="vendors/jquery.mobile.icons.min.css" />
+        
+        <!-- JS FILES -->
+        <script type="text/javascript" src="vendors/jquery-1.10.1.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true&language=en"></script>
+        <script type="text/javascript" src="vendors/iscroll.js"></script>
+        <script type="text/javascript" src="vendors/jquery.mobile.iscrollview.js"></script>
+        <script type="text/javascript" src="vendors/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" src="vendors/page-swipe.js"></script>
+        <script type="text/javascript" src="vendors/cordova.js"></script>
+ 
+		
+        <script type="text/javascript">
+    $(document).bind("mobileinit", function() {
+                $.mobile.ajaxEnabled = false;
+        $.mobile.allowCrossDomainPages = true;
+        $.support.cors=true;
+    });
+</script>
+        
+        
+        <script type="text/javascript"> 
+
+            
+          $(document).on(“pageinit”, function(){
+           if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS 7_\d/i)) {
+$("body").addClass("ios7");
+$("body").append('');
+}
+              
+               
+          });
+            
+        // Call onDeviceReady when PhoneGap is loaded.
+		//
+		// At this point, the document has loaded but phonegap-1.0.0.js has not.
+		// When PhoneGap is loaded and talking with the native device,
+		// it will call the event `deviceready`.
+		
+// 
+		function onLoad() {
+document.addEventListener("deviceready", onDeviceReady, false);
+}
+        
+	
+		// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+		//
+		function onDeviceReady() 
+		{
+            
+			// Now safe to use the PhoneGap API
+			//hide splashscreen
+			navigator.splashscreen.hide();  
+          
+});}
+
+
+    </script> 
+       
+
+    </head>
+    
+    
+    <body onLoad="onLoad()"  class="ui-nodisc-icon">
+        
+        <div data-role="page" id="slide1" class="slide-page" data-dom-cache="true" data-theme="a" data-prev="prevSlide" data-next="nextSlide" data-url="slide1">
+            
+   
+    <div data-role="header" data-position="fixed" data-fullscreen="true" data-id="hdr" data-tap-toggle="false">
+        <h1>City</h1>
+        <a href="swipe-page.html" data-direction="reverse" data-icon="delete" data-iconpos="notext" data-shadow="false" data-icon-shadow="false">Back</a>
+    </div><!-- /header -->
+    <div data-role="content">
+        <div id="trivia-city" class="trivia ui-content" data-role="popup" data-position-to="window" data-tolerance="50,30,30,30" data-theme="d">
+            <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+            <p>Here some text.</p>
+        </div><!-- /popup -->
+    </div><!-- /content -->
+    <div data-role="footer" data-position="fixed" data-fullscreen="true" data-id="ftr" data-tap-toggle="false">
+        <div data-role="controlgroup" class="control ui-btn-left" data-type="horizontal" data-mini="true">
+            <a href="#" class="prev" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-theme="d">Previous</a>
+            <a href="#" class="next" data-role="button" data-icon="arrow-r" data-iconpos="notext" data-theme="d">Next</a>
+        </div>
+        <a href="#trivia-city" data-rel="popup" class="trivia-btn ui-btn-right" data-role="button" data-icon="info" data-iconpos="left" data-theme="d" data-mini="true">Trivia</a>
+    </div><!-- /footer -->
+</div>
+    </body>
+</html>
