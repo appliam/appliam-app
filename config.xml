@@ -3,13 +3,13 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml  CHANGE ID -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.computers2u" 
-        version   = "1.0.2">
+        id        = "com.appliam.appliam" 
+        version   = "1.0.1">
 
-    <name>Computers 2U</name> <!--CHANGE ME-->
+    <name>Appliam</name> <!--CHANGE ME-->
 
     <description>
-        The Computers 2U App provides information about the north wests leader in laptop sales, repairs and upgrades
+        Appliam - Bringing apps to local business.
     </description> <!--CHANGE ME-->
 
     <author href="http://www.appliam.com" email="support@appliam.com">
