@@ -35,7 +35,13 @@
          dataType: 'json',
          data: sendData,
          success: function(data) {
-             $("#message").html(data);
+             var result = JSON.parse(data);
+             if (result.login==true){
+                 $("#message").html("Login success!");
+                 document.location.href = "main.html";
+                 
+                 
+             }else{$("#message").html("JSON error... i think -.-");}
         }
 
     });
@@ -53,17 +59,11 @@
 <body  class="ui-nodisc-icon">
         <!--NEW PAGE!!!!!!!!--> 
 		   <div data-role="page"><!-- page -->
-             
-            <div data-role="header" data-position="fixed" data-nobackbtn="true" class="ui-nodisc-icon" data-tap-toggle="false"><!-- header -->
-                <div align="center">
-                <h3>Share This App!</h3>
-                </div>
-                <a data-rel="back" data-icon="carat-l" data-iconpos="notext" data-shadow="false"  data-iconshadow="false"  data-inline="true"></a>
-            </div><!-- /header -->
+          
             <div data-role="content" data-iscroll class="spare-page"><!-- content -->
                
-
-           
+<img src="images/logo.png"/>
+           <br/>
 <div class="ui-field-contain">
   <label for="name">Username: </label>
   <input type="text" id="name">
