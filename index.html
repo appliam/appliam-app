@@ -53,9 +53,37 @@ $("body").append('');
             
           
     $(document).ready(function() {
-             $('#submit').click(function (e) {
+  
+            
+            
+    });
+            
+            
+            
+		function onLoad() {
+document.addEventListener("deviceready", onDeviceReady, false);
+            
+            
+            
+}
+        
+	
+		// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+		//
+		function onDeviceReady() 
+		{
+            
+			// Now safe to use the PhoneGap API
+			//hide splashscreen
+			navigator.splashscreen.hide();  
+          
+});}
+
+
+
+           $('#submit').click(function (e) {
                      e.preventDefault();
-                     
+                      $('#error-msg').html("click fired");
                      var user = $('#user').val();
                      var pass = $('#pass').val();
                     
@@ -90,27 +118,6 @@ $("body").append('');
                 });
             
              });
-            
-            
-    });
-            
-            
-            
-		function onLoad() {
-document.addEventListener("deviceready", onDeviceReady, false);
-}
-        
-	
-		// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
-		//
-		function onDeviceReady() 
-		{
-            
-			// Now safe to use the PhoneGap API
-			//hide splashscreen
-			navigator.splashscreen.hide();  
-          
-});}
 
 
     </script> 
