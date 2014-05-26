@@ -49,7 +49,59 @@ $("body").append('');
 		// When PhoneGap is loaded and talking with the native device,
 		// it will call the event `deviceready`.
 		
-// 
+//
+            
+          
+            
+            $(document).on('submit','form.login',function(){
+                     
+                     var user = $('#user').val();
+                     var pass = $('#pass').val();
+                    
+                    var sendData = {"user": user,"pass": pass};
+           
+                   
+                    $.ajax({
+                     type: "POST",
+                     url: "http://www.appliam.com/appCheck.php",
+                     dataType: 'JSON',
+                     data: sendData,
+                     timeout:5000,
+                     success: function(data) {
+                         var result = JSON.parse(data);
+                         if (result.login==true)
+                         {
+                             localStorage.setItem("user",user);
+                             localStorage.setItem("pass",pass);
+                             document.location.href = "main.html";
+                         }
+                         else{
+                             
+                             $('#error-msg').html("Invalid Login ... Please Try Again!");
+                         }
+                   
+                    },
+                        error: function(){
+                         
+                        $('#error-msg').html("Network Error");
+                });
+                 
+                
+              
+            
+            
+            });
+            
+            
+            
+            success: var myObject = JSON.parse(data);
+            
+            
+            
+      
+            
+            
+            
 		function onLoad() {
 document.addEventListener("deviceready", onDeviceReady, false);
 }
@@ -74,26 +126,37 @@ document.addEventListener("deviceready", onDeviceReady, false);
     
     
     <body onLoad="onLoad()"  class="ui-nodisc-icon">
-        
-        <div data-role="page" id="slide1" class="slide-page" data-dom-cache="true" data-theme="a" data-prev="prevSlide" data-next="nextSlide" data-url="slide1">
+        <div data-role="page" id="home" data-theme="g"><!-- page -->
             
-   
-    <div data-role="header" data-position="fixed" data-fullscreen="true" data-id="hdr" data-tap-toggle="false">
-        <h1>City</h1>
-        <a href="swipe-page.html" data-direction="reverse" data-icon="delete" data-iconpos="notext" data-shadow="false" data-icon-shadow="false">Back</a>
-    </div><!-- /header -->
-    <div data-role="content">
-        <div id="trivia-city" class="trivia ui-content" data-role="popup" data-position-to="window" data-tolerance="50,30,30,30" data-theme="d">
-            <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-            <p>Here some text.</p>
-        </div><!-- /popup -->
-    </div><!-- /content -->
-    <div data-role="footer" data-position="fixed" data-fullscreen="true" data-id="ftr" data-tap-toggle="false">
-        <div data-role="controlgroup" class="control ui-btn-left" data-type="horizontal" data-mini="true">
-            <a href="#" class="prev" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-theme="d">Previous</a>
-            <a href="#" class="next" data-role="button" data-icon="arrow-r" data-iconpos="notext" data-theme="d">Next</a>
-        </div>
-        <a href="#trivia-city" data-rel="popup" class="trivia-btn ui-btn-right" data-role="button" data-icon="info" data-iconpos="left" data-theme="d" data-mini="true">Trivia</a>
+            <div data-role="content" data-iscroll><!-- content -->
+               
+                <div> <!--LOGO-->
+                <img src="images/logo.png" style="max-width: 400px; max-height: 175px; width:100%; display: block; margin-left: auto; margin-right: auto;"/>
+                </div>
+               <br/>
+                
+                <p id="error-msg" align="center"></p>
+                <br/>
+                <form id="login">
+            
+                  <div class="ui-field-contain">
+  <label for="name">Username:</label>
+  <input type="text" id="user" placeholder="" value="">
+</div>   
+                  
+                  <div class="ui-field-contain">
+  <label for="name">Password:</label>
+  <input type="password" id="pass"  value="">
+</div>  <br/><br/>
+                    <input type="submit" value="Login">
+                </form>
+                
+                
+                
+                </div><!--////content-->
+<div data-role="footer" data-position="fixed"  data-id="ftr" data-tap-toggle="false">
+        
+        <a href="#help" data-rel="popup" class="trivia-btn ui-btn-right" data-role="button" data-icon="info" data-iconpos="left" data-theme="b" data-mini="true">Help</a>
     </div><!-- /footer -->
 </div>
     </body>
