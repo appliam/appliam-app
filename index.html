@@ -1,13 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 
-<html>
-    <head>
+<head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
         <meta name="apple-mobile-web-app-capable" content="yes">
 
         <!-- STYLESHEETS -->
-        
         <link rel="stylesheet" href="vendors/jquery.mobile.structure-1.4.2.min.css" />
         <link rel="stylesheet" href="vendors/jquery.mobile.flatui.css" />
         <link rel="stylesheet" href="vendors/jquery.mobile.icons.min.css" />
@@ -18,144 +16,89 @@
         <script type="text/javascript" src="vendors/iscroll.js"></script>
         <script type="text/javascript" src="vendors/jquery.mobile.iscrollview.js"></script>
         <script type="text/javascript" src="vendors/jquery.mobile-1.4.2.min.js"></script>
-        <script type="text/javascript" src="vendors/page-swipe.js"></script>
         <script type="text/javascript" src="vendors/cordova.js"></script>
- 
-		
-        <script type="text/javascript">
-    $(document).bind("mobileinit", function() {
-                $.mobile.ajaxEnabled = false;
-        $.mobile.allowCrossDomainPages = true;
-        $.support.cors=true;
+    
+        <script>
+    
+            var theme = "a";
+            
+            $(document).ready(function() {
+
+         $('#submit').click(function (e) {
+             e.preventDefault();
+             var name= $("#name").val();
+             var pass= $("#pass").val();
+             var sendData = {"user": name, "pass": pass};
+            $.ajax({
+         type: "POST",
+         url: "http://www.appliam.com/app-login.php",
+         dataType: 'json',
+         data: sendData,
+         success: function(data) {
+             $("#message").html(data);
+        }
+
     });
-</script>
-        
-        
-        <script type="text/javascript"> 
+             $("#message").html("Logging in...");
+            $("#email").val("");
 
-            
-          $(document).on(“pageinit”, function(){
-           if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS 7_\d/i)) {
-$("body").addClass("ios7");
-$("body").append('');
-}
-              
-               
-          });
-            
-        // Call onDeviceReady when PhoneGap is loaded.
-		//
-		// At this point, the document has loaded but phonegap-1.0.0.js has not.
-		// When PhoneGap is loaded and talking with the native device,
-		// it will call the event `deviceready`.
-		
-//
-            
-          
-    $(document).ready(function() {
-  
-            
-            
-    });
-            
-            
-            
-		function onLoad() {
-document.addEventListener("deviceready", onDeviceReady, false);
-            
-            
-            
-}
-        
-	
-		// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
-		//
-		function onDeviceReady() 
-		{
-            
-			// Now safe to use the PhoneGap API
-			//hide splashscreen
-			navigator.splashscreen.hide();  
-          
-});}
-
-
-
-           $('#submit').click(function (e) {
-                     e.preventDefault();
-                      $('#error-msg').html("click fired");
-                     var user = $('#user').val();
-                     var pass = $('#pass').val();
-                    
-                    var sendData = {"user": user,"pass": pass};
-           
-                   
-                    $.ajax({
-                     type: "POST",
-                     url: "http://www.appliam.com/app-login.php",
-                     dataType: 'json',
-                     data: sendData,
-                     timeout:5000,
-                     success: function(data) {
-                         var result = JSON.parse(data);
-                         if (result.login==true)
-                         {
-                             localStorage.setItem("user",user);
-                             localStorage.setItem("pass",pass);
-                             document.location.href = "main.html";
-                         }
-                         else{
-                             
-                             $('#error-msg').html("Invalid Login ... Please Try Again!");
-                         }
-                   
-                    },
-                        error: function(){
-                         
-                        $('#error-msg').html("Network Error");
-                }
-                 
-                });
-            
-             });
-
-
-    </script> 
+});
+            });
        
 
-    </head>
-    
-    
-    <body onLoad="onLoad()"  class="ui-nodisc-icon">
-        <div data-role="page" id="home" data-theme="g"><!-- page -->
-            
-            <div data-role="content" data-iscroll><!-- content -->
-               
-                <div> <!--LOGO-->
-                <img src="images/logo.png" style="max-width: 400px; max-height: 175px; width:100%; display: block; margin-left: auto; margin-right: auto;"/>
-                </div>
-               <br/>
-                
-                <p id="error-msg" align="center"></p>
-                
-               
-            
-                  <div class="ui-field-contain">
-  <label for="name">Username:</label>
-  <input type="text" id="user" placeholder="" value="">
-</div>   
-                  
-                  <div class="ui-field-contain">
-  <label for="name">Password:</label>
-  <input type="password" id="pass"  value="">
-</div>  <br/><br/>
-                   <a id="submit" data-role="button" data-icon="check">Login</a>
-              
-                
-                
-                
-                </div><!--////content-->
+     
+        </script>
+</head>
 
-</div>
-    </body>
+<body  class="ui-nodisc-icon">
+        <!--NEW PAGE!!!!!!!!--> 
+		   <div data-role="page"><!-- page -->
+             
+            <div data-role="header" data-position="fixed" data-nobackbtn="true" class="ui-nodisc-icon" data-tap-toggle="false"><!-- header -->
+                <div align="center">
+                <h3>Share This App!</h3>
+                </div>
+                <a data-rel="back" data-icon="carat-l" data-iconpos="notext" data-shadow="false"  data-iconshadow="false"  data-inline="true"></a>
+            </div><!-- /header -->
+            <div data-role="content" data-iscroll class="spare-page"><!-- content -->
+               
+
+           
+<div class="ui-field-contain">
+  <label for="name">Username: </label>
+  <input type="text" id="name">
+</div>   
+      <br/>
+<div class="ui-field-contain">
+  <label for="pass">Password: </label>
+  <input type="password" id="pass" >
+</div>   
+                <br/>
+<a id="submit" data-role="button" data-icon="check">Login!</a>
+                <br/>
+                <p id="message" align="center"></p>
+                
+                
+                        
+                
+            </div><!-- /content -->
+            </div><!-- /page -->
+    <script>
+    
+        $("div [data-role]").attr("data-theme",theme);
+            
+        $("a").attr("data-theme",theme);
+            
+        $("div [data-role=content]").attr("data-theme","");
+        
+        $("#submit").attr("data-theme","g");
+        
+         $('[data-role="content"]').attr('class', "scrollable");
+        
+       
+        
+    
+    </script>
+    
+</body>
 </html>
