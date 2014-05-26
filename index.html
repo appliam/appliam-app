@@ -36,12 +36,13 @@
          data: sendData,
          success: function(data) {
         
-             if (data!="0"){
-                 $("#message").html("Login success!");
-                 localStorage.setItem("memberID",data);
-                 document.location.href = "main.html";
+             if (data=="0"){
+                 $("#message").html("Wrong username or password!");
+                 
                      
-             }else{$("#message").html("Wrong username or password!");}
+             }else{$("#message").html("Login success!");
+                 localStorage.setItem("memberID",data);
+                 document.location.href = "main.html";}
         }
 
     });
