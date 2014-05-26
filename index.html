@@ -53,7 +53,8 @@ $("body").append('');
             
           
             
-            $(document).on('submit','form.login',function(){
+             $('#submit').click(function (e) {
+                     e.preventDefault();
                      
                      var user = $('#user').val();
                      var pass = $('#pass').val();
@@ -84,18 +85,11 @@ $("body").append('');
                         error: function(){
                          
                         $('#error-msg').html("Network Error");
-                });
+                }
                  
-                
-              
+                });
             
-            
-            });
-            
-            
-            
-            success: var myObject = JSON.parse(data);
-            
+             });
             
             
       
@@ -148,7 +142,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
   <label for="name">Password:</label>
   <input type="password" id="pass"  value="">
 </div>  <br/><br/>
-                    <input type="submit" value="Login">
+                    <input type="submit" id="submit" value="Login">
                 </form>
                 
                 
