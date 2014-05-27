@@ -24,6 +24,10 @@
             
             $(document).ready(function() {
 
+                if(localStorage.getItem("memberID")!= undefined)
+                {
+                    document.location.href = "main.html";
+                }
          $('#submit').click(function (e) {
              e.preventDefault();
              var name= $("#name").val();
@@ -35,10 +39,8 @@
          dataType: 'text',
          data: sendData,
          success: function(data) {
-        
-             $("#message").html(data);
-             
-             /*if (data==="0"){
+   
+             if (data=="0"){
                  $("#message").html("Wrong username or password!");
                  
                      

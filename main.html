@@ -24,6 +24,8 @@
             
             $(document).ready(function() {
 
+                
+                $('#username').html(localStorage.getItem("memberID"));
          $('#submit').click(function (e) {
              e.preventDefault();
              var appName = "Computers 2U";
@@ -66,9 +68,9 @@
             <div data-role="content" data-iscroll class="spare-page"><!-- content -->
                
 
-           <p>YOU LOGGED IN! YAYYYYYYYY</p>
+           <p>YOU LOGGED IN! YAYYYYYYYY<br/> The username is...</p>
                         
-                
+                <div id=username></div>
             </div><!-- /content -->
             </div><!-- /page -->
     <script>
