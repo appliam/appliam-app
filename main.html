@@ -32,6 +32,12 @@
                      document.location.href="editApp.html";
     });
                 
+                 $("#logout").click(function(event) {
+                     event.preventDefault();
+                  localStorage.removeItem("memberID");
+                     document.location.href="index.html";
+    });
+                
                 
                  var sendData = {"memberID": memberID};
             $.ajax({
@@ -62,7 +68,7 @@
                
                 <h3>Appliam</h3>
              
-                <a data-rel="back" data-icon="carat-l" data-iconpos="left" data-shadow="false"  data-iconshadow="false"  data-inline="true">Logout</a>
+                <a href="#" id="logout" data-icon="carat-l" data-iconpos="left" data-shadow="false"  data-iconshadow="false"  data-inline="true">Logout</a>
             </div><!-- /header -->
             <div data-role="content" data-iscroll class="spare-page"><!-- content -->
                 
