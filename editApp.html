@@ -24,30 +24,27 @@
             
             $(document).ready(function() {
                 var memberID=localStorage.getItem("memberID");
-                $('#username').html(localStorage.getItem("memberID"));
-    
-                 $(".app").click(function(event) {
-                     event.preventDefault();
-                  localStorage.setItem("appID")=event.target.id;
-                     document.location.href="editApp.html";
-    });
-                
-                
-                 var sendData = {"memberID": memberID};
+                var appID = localStorage.getItem("appID");
+
+
+                var sendData = {"appID": appID, "memberID": memberID};
             $.ajax({
          type: "POST",
-         url: "http://www.appliam.com/app-main.php",
+         url: "http://www.appliam.com/app-edit.php",
          dataType: 'text',
          data: sendData,
          success: function(data) {
-                $("#appList").html(data);
+                $("#editApp").html(data);
              
         }
              
 
     });
-});
-   
+                
+                
+                
+                
+            });
        
 
      
@@ -60,16 +57,13 @@
              
             <div data-role="header" data-position="fixed" data-nobackbtn="true" class="ui-nodisc-icon" data-theme="f" data-tap-toggle="false"><!-- header -->
                
-                <h3>Appliam</h3>
+                <h3>Edit App</h3>
              
                 <a data-rel="back" data-icon="carat-l" data-iconpos="left" data-shadow="false"  data-iconshadow="false"  data-inline="true">Logout</a>
             </div><!-- /header -->
             <div data-role="content" data-iscroll class="spare-page"><!-- content -->
-                
-                <div id="appList"></div>
-                
-        
-
+                <div id="editApp">Loading Data...</div>
+                 
             </div><!-- /content -->
             </div><!-- /page -->
     <script>
