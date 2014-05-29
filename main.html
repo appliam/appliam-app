@@ -27,12 +27,7 @@
                 $('#username').html(localStorage.getItem("memberID"));
     
                   
-       $(document).on("click", "a.app", function(event) { 
-           
-          event.preventDefault();
-                  localStorage.setItem("appID")=event.target.id;
-                     document.location.href="editApp.html";
-                       });
+       
                 
                 
                  $("#logout").click(function(event) {
@@ -52,6 +47,12 @@
                 $("#appList").html(data);
              $("#apps").trigger('create');
              
+             $(document).on("click", "a.app", function(event) { 
+           
+          event.preventDefault();
+                  localStorage.setItem("appID")=event.target.id;
+                     document.location.href="editApp.html";
+                       });
               
 
              
