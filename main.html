@@ -38,7 +38,7 @@
                      document.location.href="index.html";
     });
                 
-                var appList = $("#appList");
+              $("#appList").html("Loading Apps...");
                  var sendData = {"memberID": memberID};
             $.ajax({
          type: "POST",
@@ -46,8 +46,8 @@
          dataType: 'text',
          data: sendData,
          success: function(data) {
-                applist.html(data);
-             $("apps").trigger("create");
+                $("#appList").html(data);
+             $("#apps").trigger("create");
              
         }
              
