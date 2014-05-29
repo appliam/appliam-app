@@ -30,6 +30,16 @@
 });
             
             
+            
+            
+$("#appList").on("click", ".app", function(){
+    $("#msg").html("clicked!");    
+                localStorage.setItem("appID")=getData($(this).data('app-id'));
+                     document.location.href="editApp.html";
+});
+            
+            
+            
             function appClick(id){
                      localStorage.setItem("appID")=id;
                      document.location.href="editApp.html";
@@ -58,7 +68,7 @@
          dataType: 'text',
          data: sendData,
          success: function(data) {
-                $("#appList").html(data);
+                $("#appList").append(data);
              $("#apps").trigger('create');
              
            
