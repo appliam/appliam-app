@@ -76,8 +76,8 @@ small {
  
         div[data-role="content"] {
             position: absolute;
-            top: 62px;
-            bottom: 55px;
+            top: 55px;
+            bottom: 0px;
             left: 0;
             right: 0;
         }
