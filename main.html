@@ -22,6 +22,14 @@
     
             var theme = "f";
             
+            
+            $(document).on('click', '#appContent li a', function (e) {
+                $("#msg").html("clicked!");    
+                localStorage.setItem("appID")=getData($(this).data('app-id'));
+                     document.location.href="editApp.html";
+});
+            
+            
             function appClick(id){
                      localStorage.setItem("appID")=id;
                      document.location.href="editApp.html";
@@ -79,7 +87,7 @@
                 <a href="#" id="logout" data-icon="carat-l" data-iconpos="left" data-shadow="false"  data-iconshadow="false"  data-inline="true">Logout</a>
             </div><!-- /header -->
             <div data-role="content" data-iscroll class="spare-page" id="appList"><!-- content -->
-                
+                <div id="msg"></div>
                 
         
 
