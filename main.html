@@ -26,11 +26,14 @@
                 var memberID=localStorage.getItem("memberID");
                 $('#username').html(localStorage.getItem("memberID"));
     
-                 $(".app").click(function(event) {
-                     event.preventDefault();
+                  
+       $(document).on("click", "a.app", function(event) { 
+           
+          event.preventDefault();
                   localStorage.setItem("appID")=event.target.id;
                      document.location.href="editApp.html";
-    });
+                       });
+                
                 
                  $("#logout").click(function(event) {
                      event.preventDefault();
@@ -83,16 +86,7 @@
             </div><!-- /page -->
     <script>
     
-       
-       $(document).on("click", "a.app", function(event) { 
-           
-          event.preventDefault();
-                  localStorage.setItem("appID")=event.target.id;
-                     document.location.href="editApp.html";
-                                                   
-                                                   
-                                                   
-                                                   }); 
+      
             
         $("div [data-role=content]").attr("data-theme","");
         
