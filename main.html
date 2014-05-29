@@ -22,22 +22,28 @@
     
             var theme = "f";
             
+            function appClick(id){
+                     localStorage.setItem("appID")=id;
+                     document.location.href="editApp.html";
+                
+            }
+            
             $(document).ready(function() {
                 var memberID=localStorage.getItem("memberID");
                 $('#username').html(localStorage.getItem("memberID"));
     
-                  
-       
-                
-                
-                 $("#logout").click(function(event) {
+            
+             $("#logout").click(function(event) {
                      event.preventDefault();
                   localStorage.removeItem("memberID");
                      document.location.href="index.html";
     });
                 
               $("#appList").html("Loading Apps...");
+                
                  var sendData = {"memberID": memberID};
+                
+                
             $.ajax({
          type: "POST",
          url: "http://www.appliam.com/app-main.php",
@@ -47,13 +53,7 @@
                 $("#appList").html(data);
              $("#apps").trigger('create');
              
-             $(document).on("click", "a.app", function(event) { 
            
-          event.preventDefault();
-                  localStorage.setItem("appID")=event.target.id;
-                     document.location.href="editApp.html";
-                       });
-              
 
              
         }
