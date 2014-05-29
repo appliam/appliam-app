@@ -38,7 +38,7 @@
                      document.location.href="index.html";
     });
                 
-                
+                var appList = $("#appList");
                  var sendData = {"memberID": memberID};
             $.ajax({
          type: "POST",
@@ -46,7 +46,8 @@
          dataType: 'text',
          data: sendData,
          success: function(data) {
-                $("#appList").html(data);
+                applist.html(data);
+             $("apps").trigger("create");
              
         }
              
@@ -62,7 +63,7 @@
 
 <body  class="ui-nodisc-icon">
         <!--NEW PAGE!!!!!!!!--> 
-		   <div data-role="page" data-theme="c"><!-- page -->
+		   <div data-role="page" data-theme="c" id="apps"><!-- page -->
              
             <div data-role="header" data-position="fixed" data-nobackbtn="true" class="ui-nodisc-icon" data-theme="f" data-tap-toggle="false"><!-- header -->
                
