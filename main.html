@@ -23,7 +23,7 @@
             var theme = "f";
             
             
-            $(document).on('click', '#appContent li a', function (e) {
+           $('ul').on('click', 'li', function() {
                 $("#msg").html("clicked!");    
                 localStorage.setItem("appID")=getData($(this).data('app-id'));
                      document.location.href="editApp.html";
@@ -31,20 +31,8 @@
             
             
             
-            
-$("#appList").on("click", ".app", function(){
-    $("#msg").html("clicked!");    
-                localStorage.setItem("appID")=getData($(this).data('app-id'));
-                     document.location.href="editApp.html";
-});
-            
-            
-            
-            function appClick(id){
-                     localStorage.setItem("appID")=id;
-                     document.location.href="editApp.html";
-                
-            }
+    
+   
             
             $(document).ready(function() {
                 var memberID=localStorage.getItem("memberID");
@@ -57,7 +45,7 @@ $("#appList").on("click", ".app", function(){
                      document.location.href="index.html";
     });
                 
-              $("#appList").html("Loading Apps...");
+              $("#msg").html("Loading Apps...");
                 
                  var sendData = {"memberID": memberID};
                 
@@ -70,6 +58,7 @@ $("#appList").on("click", ".app", function(){
          success: function(data) {
                 $("#appList").append(data);
              $("#apps").trigger('create');
+             $("#msg").html("");
              
            
 
