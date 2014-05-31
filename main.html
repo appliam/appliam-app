@@ -23,7 +23,7 @@
             var theme = "f";
             
             
-           $('ul').on('click', 'li', function() {
+           $(document.body).on('click', '.app', function() {
                 $("#msg").html("clicked!");    
                 localStorage.setItem("appID")=getData($(this).data('app-id'));
                      document.location.href="editApp.html";
