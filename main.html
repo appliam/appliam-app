@@ -22,13 +22,7 @@
     
             var theme = "f";
             
-           
-           $("#content").on('click', '.app', function() {
-                $("#msg").html("clicked!");    
-                localStorage.setItem("appID")=getData($(this).data('app-id'));
-                     document.location.href="editApp.html";
-});
-            
+
           
     
    
@@ -66,6 +60,17 @@
              
 
     });
+                
+                
+                  
+           $("#content").on('click', '.app', function() {
+                $("#msg").html("clicked!");    
+                localStorage.setItem("appID")=getData($(this).data('app-id'));
+                     document.location.href="editApp.html";
+});
+                     
+                
+                
 });
    
        
