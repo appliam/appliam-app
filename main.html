@@ -49,8 +49,15 @@
          dataType: 'text',
          data: sendData,
          success: function(data) {
-                $("#content").append(data);
-             $("#apps").trigger('create');
+                $("#appContent").append(data).done(function () {
+                   //refresh list here 
+        $(this).listview("refresh");
+        //then add click event using delegation
+        $(this).on("click", "li", function (e) {
+            $("#msg").html("The app was clicked!");
+        });
+             });
+             
              $("#msg").html("");
           
            
@@ -61,7 +68,7 @@
 
     });
                 
-                
+          
                   
            $("#content").on('click', '.app', function() {
                 $("#msg").html("clicked!");    
@@ -92,6 +99,9 @@
             <div data-role="content" data-iscroll class="spare-page"><!-- content -->
                 <div id="msg"></div>
                 <div id="content"></div>
+                <ul data-role="listview" data-inset="true" data-theme="c" id="appContent"> 
+                    
+                    </ul>
                 
         
 
